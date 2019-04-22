@@ -1,0 +1,7 @@
+<form [formGroup]="logForm" (ngSubmit)="chkCreds()" *ngIf="!loggedIn">
+    <p>Username:</p>
+    <input [formControl]="logForm.controls['username']">
+    <p>Password:</p>
+    <input [formControl]="logForm.controls['password']">
+    <button type="submit">Submit</button>
+</form>
