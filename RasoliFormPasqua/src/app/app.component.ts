@@ -14,17 +14,12 @@ import {DefUsr} from './defaultuser'
 })
 export class AppComponent {
   title = 'RasoliFormPasqua';
-  loggedIn : Boolean;
-  sUser : Boolean;
   logForm : FormGroup;
-  sUsr: Boolean;
   DefUser: User[];
+  loggedUser: User;
   constructor(fb: FormBuilder)
   {
-    this.loggedIn = false;
-    this.sUser = false;
     this.DefUser = DefUsr;
-
     this.logForm = fb.group({
       'username' : ['', Validators.required],
       'password' : ['', Validators.required],
@@ -36,8 +31,7 @@ export class AppComponent {
     {
       if(a.username == this.logForm.controls['username'].value && a.password == this.logForm.controls['password'].value)
       {
-        this.loggedIn = true;
-        this.sUsr = Boolean(a.superuser);
+        this.loggedUser = a;
         console.log("logged in");
       }
     }

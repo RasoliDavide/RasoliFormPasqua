@@ -7,6 +7,7 @@ import {
 import { AppComponent } from './app.component';
 import { RasoliPrenotazioniComponent } from './rasoli-prenotazioni/rasoli-prenotazioni.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

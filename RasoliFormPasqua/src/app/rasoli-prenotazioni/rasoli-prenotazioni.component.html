@@ -1,3 +1,22 @@
-<p>
-  rasoli-prenotazioni works!
-</p>
+<button (click)="triggerForm()" >{{aprtext}}</button>
+<form [formGroup] = "nuovaPrenotazione" *ngIf="pren" (ngSubmit)="prenotazione()">
+  <p>Nome: </p>
+  <input type="text" [formControl]="nuovaPrenotazione.controls['nome']">
+  <p>Cognome: </p>
+  <input type="text" [formControl]="nuovaPrenotazione.controls['cognome']">
+  <p>Ora inizio: </p>
+  <input type="time" [formControl]="nuovaPrenotazione.controls['oraInizio']">
+  <p>Ora fine: </p>
+  <input type="time" [formControl]="nuovaPrenotazione.controls['oraFine']">
+  <p>Data: </p>
+  <input type="date" [formControl]="nuovaPrenotazione.controls['data']">
+  <p>email: </p>
+  <input type="email" [formControl]="nuovaPrenotazione.controls['email']">
+  <p>Numero di telefono: </p>
+  <input type="text" [formControl]="nuovaPrenotazione.controls['nTel']">
+  <p>Indirizzo: </p>
+  <input type="text" [formControl]="nuovaPrenotazione.controls['domicilio']">
+  <p>Problema: </p>
+  <input type="text" [formControl]="nuovaPrenotazione.controls['problema']">
+  <button type="submit">Prenota!</button>
+</form>
