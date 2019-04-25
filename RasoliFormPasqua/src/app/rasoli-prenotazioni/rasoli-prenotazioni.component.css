@@ -12,7 +12,8 @@ li
 {
   padding: 10px 5px;
   border: 1px solid black;
-  display:block;
+  display:inline-block;
+  width: 50%;
 }
 p{
   margin-top: 10px;
@@ -21,4 +22,18 @@ p{
 form div button
 {
   margin-top: 8px;
+}
+.prenSelected
+{
+  border: 1px solid green;
+  margin: 20px;
+  padding: 20px;
+}
+ul div
+{
+  margin: 20px;
+}
+.btnpren
+{
+  margin: 10px;
 }

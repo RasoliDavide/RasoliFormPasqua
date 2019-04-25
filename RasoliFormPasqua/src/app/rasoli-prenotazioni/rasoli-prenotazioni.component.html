@@ -1,15 +1,23 @@
+<h3 *ngIf="prenotazioni.length == 0" style="text-align: center;"> 
+  Nessun intervento prenotato
+</h3>
 
-<div>
-  <h2>Prenotazioni</h2>
+<div *ngIf="prenotazioni.length > 0">
+  <h2>Interventi prenotati:</h2>
   <ul>
-    <li *ngFor="let a of prenotazioni"
+    <div *ngFor="let a of prenotazioni"
     [class.selected]="a === ps"
     (click)="onSelect(a)"
-    class="bg-grey">{{a.nome}} {{a.cognome}} {{a.oraInizio}}-{{a.oraFine}}</li>
+    class="bg-grey">
+    <li>{{a.nome}} {{a.cognome}} il {{a.data}} dalle {{a.oraInizio}} alle {{a.oraFine}}
+  </li>
+  </div>
   </ul>
 </div>
-<app-rasoli-prenotazioni-view [prenSel]="prenSel" *ngIf="prenSel" [su]="su"></app-rasoli-prenotazioni-view>
-<button (click)="triggerForm()" class="btn btn-primary" *ngIf="!pren">{{aprtext}}</button>
+<div  *ngIf="prenSel" class="prenSelected">
+  <app-rasoli-prenotazioni-view [prenSel]="prenSel" [su]="su"></app-rasoli-prenotazioni-view>
+</div>
+<button (click)="triggerForm()" class="btn btn-primary btnpren" *ngIf="!pren">{{aprtext}}</button>
 <form [formGroup] = "nuovaPrenotazione" *ngIf="pren" (ngSubmit)="prenotazione()">
   <div class="form-group col-sm-6 mx-auto d-block">
   <p>Nome: </p>
@@ -18,8 +26,11 @@
   <input type="text" [formControl]="nuovaPrenotazione.controls['cognome']" class="form-control">
   <p>Ora inizio: </p>
   <input type="time" [formControl]="nuovaPrenotazione.controls['oraInizio']" class="form-control">
+  <div class="alert alert-danger" role="alert" *ngIf="oraInizioErr || err">Ora di inizio non valida - Siamo occupati</div>
   <p>Ora fine: </p>
   <input type="time" [formControl]="nuovaPrenotazione.controls['oraFine']" class="form-control">
+  <div class="alert alert-danger" role="alert" *ngIf="oraFineErr || err">Ora di fine non valida - Siamo occupati</div>
+  <div class="alert alert-danger" role="alert" *ngIf="inverted">L'ora di fine non può essere antecedente a quella di inizio</div>
   <p>Data: </p>
   <input type="date" [formControl]="nuovaPrenotazione.controls['data']" class="form-control">
   <p>email: </p>
@@ -30,7 +41,7 @@
   <input type="text" [formControl]="nuovaPrenotazione.controls['domicilio']" class="form-control">
   <p>Problema: </p>
   <input type="text" [formControl]="nuovaPrenotazione.controls['problema']" class="form-control">
-  <button type="submit" class="btn btn-primary">Prenota!</button>
-  <button (click)="triggerForm()" class="btn btn-secondary float-right" *ngIf="pren">{{aprtext}}</button>
+  <button type="submit" class="btn btn-primary float-right">Prenota!</button>
+  <button (click)="triggerForm()" class="btn btn-secondary float-left" *ngIf="pren">{{aprtext}}</button>
 </div>
 </form>
