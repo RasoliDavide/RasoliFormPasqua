@@ -33,7 +33,7 @@ export class AppComponent {
       if(a.username == this.logForm.controls['username'].value && a.password == this.logForm.controls['password'].value)
       {
         this.loggedUser = a;
-        console.log("logged in");
+        console.log("Loggato correttamente");
       }
     }
     if(this.loggedUser == null)
@@ -41,7 +41,7 @@ export class AppComponent {
         this.err = 1;
         this.logForm.controls['username'].setValue("");
         this.logForm.controls['password'].setValue("");
-        
+        console.log("Credenziali errate")
     }
   }
 }

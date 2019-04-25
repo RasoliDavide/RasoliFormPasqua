@@ -1,4 +1,5 @@
 <div>
   <h2>Prenotazione selezionata:</h2>
-  <p>Cliente: {{prenSel.nome}} {{prenSel.cognome}}</p>
+  <p *ngIf="su">Cliente: {{prenSel.nome}} {{prenSel.cognome}}</p>
+  <p>Il giorno: {{prenSel.data}} dalle {{prenSel.oraInizio}} alle {{prenSel.oraFine}}</p>
 </div>

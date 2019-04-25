@@ -8,6 +8,7 @@ import { Prenotazione } from '../prenotazioni';
 })
 export class RasoliPrenotazioniViewComponent implements OnInit {
   @Input() prenSel : Prenotazione;
+  @Input() su : Boolean;
   constructor() { }
 
   ngOnInit() {
