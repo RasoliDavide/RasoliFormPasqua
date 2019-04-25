@@ -1,0 +1,21 @@
+.ng-valid:not(form) {
+    border-left: 5px solid #42A948; /* green */
+  }
+  .ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; /* red */
+  }
+
+ .scritta
+ {
+     margin-top: 10px;
+     margin-bottom: 7px;
+ }
+ .logbtn
+ {
+     margin-top: 7px;
+ }
+ .dverr
+ {
+     color: black;
+     margin-top: 10px;
+ }

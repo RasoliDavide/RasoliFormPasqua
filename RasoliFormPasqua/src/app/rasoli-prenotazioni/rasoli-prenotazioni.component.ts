@@ -12,10 +12,11 @@ export class RasoliPrenotazioniComponent implements OnInit {
   nuovaPrenotazione: FormGroup;
   aprtext:String;
   prenotazioni: Prenotazione[];
-
+  prenSel : Prenotazione;
   constructor(fb: FormBuilder) { 
     this.pren = false;
     this.aprtext = "Prenota intervento";
+    this.prenotazioni = Array<Prenotazione>();
     this.nuovaPrenotazione = fb.group(
       {
         'nome' : ['', Validators.required],
@@ -47,7 +48,17 @@ export class RasoliPrenotazioniComponent implements OnInit {
       console.log(this.nuovaPrenotazione.controls['nTel'].value);
       console.log(this.nuovaPrenotazione.controls['domicilio'].value);
       console.log(this.nuovaPrenotazione.controls['problema'].value);
+      this.prenotazioni.push(new Prenotazione(this.nuovaPrenotazione.controls['nome'].value, this.nuovaPrenotazione.controls['cognome'].value,
+      this.nuovaPrenotazione.controls['oraInizio'].value, this.nuovaPrenotazione.controls['oraFine'].value,
+      this.nuovaPrenotazione.controls['data'].value, this.nuovaPrenotazione.controls['email'].value,
+      this.nuovaPrenotazione.controls['nTel'].value,this.nuovaPrenotazione.controls['domicilio'].value,
+      this.nuovaPrenotazione.controls['problema'].value));
     }
+  }
+  onSelect(ps:Prenotazione)
+  {
+    console.log("sel");
+    this.prenSel = ps;
   }
   triggerForm()
   {

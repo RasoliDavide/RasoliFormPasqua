@@ -1,8 +1,11 @@
-<form [formGroup]="logForm" (ngSubmit)="chkCreds()" *ngIf="!loggedUser">
-    <p>Username:</p>
-    <input [formControl]="logForm.controls['username']">
-    <p>Password:</p>
-    <input [formControl]="logForm.controls['password']">
-    <button type="submit">Submit</button>
+<form [formGroup]="logForm" (ngSubmit)="chkCreds()" *ngIf="!loggedUser" >
+    <div class="form-group logDiv col-sm-6 d-block mx-auto">
+    <p class="scritta">Username:</p>
+    <input [formControl]="logForm.controls['username']" class="form-control">
+    <p class="scritta">Password:</p>
+    <input [formControl]="logForm.controls['password']" class="form-control">
+    <button type="submit" class="btn btn-primary logbtn">Login</button>
+    <div *ngIf="err==1" class="bg-danger dverr form-control"><strong>Credenziali errate</strong></div>
+</div>
 </form>
 <app-rasoli-prenotazioni *ngIf="loggedUser"></app-rasoli-prenotazioni>

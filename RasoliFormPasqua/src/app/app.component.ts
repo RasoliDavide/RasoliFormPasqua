@@ -17,6 +17,7 @@ export class AppComponent {
   logForm : FormGroup;
   DefUser: User[];
   loggedUser: User;
+  err : Number;
   constructor(fb: FormBuilder)
   {
     this.DefUser = DefUsr;
@@ -34,6 +35,13 @@ export class AppComponent {
         this.loggedUser = a;
         console.log("logged in");
       }
+    }
+    if(this.loggedUser == null)
+    {
+        this.err = 1;
+        this.logForm.controls['username'].setValue("");
+        this.logForm.controls['password'].setValue("");
+        
     }
   }
 }

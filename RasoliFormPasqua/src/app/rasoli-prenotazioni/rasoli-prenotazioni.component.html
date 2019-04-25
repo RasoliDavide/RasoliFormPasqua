@@ -20,3 +20,12 @@
   <input type="text" [formControl]="nuovaPrenotazione.controls['problema']">
   <button type="submit">Prenota!</button>
 </form>
+<div>
+  <h2>Prenotazioni</h2>
+  <ul>
+    <li *ngFor="let a of prenotazioni"
+    [class.selected]="a === ps"
+    (click)="onSelect(a)">{{a.nome}}</li>
+  </ul>
+</div>
+<app-rasoli-prenotazioni-view [prenSel]="prenSel" *ngIf="prenSel"></app-rasoli-prenotazioni-view>
